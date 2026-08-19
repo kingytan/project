@@ -11,7 +11,7 @@ The apps are Claude used; the API is Claude *shipped*: inside your scripts, your
 - You need **exact control**: which model, how much reasoning, what tools, structured output shapes.
 - You want **your own agent** with your tools and your rules.
 
-Access starts at the Console (platform.claude.com): create a key, experiment in the Workbench (it even has a prompt improver), then graduate to the SDKs (Python, TypeScript, and most major languages).
+Access starts at the Console (platform.claude.com): create a key, experiment in the **Playground** (which replaced the older Workbench in August 2026 — it supports every API parameter and shows you the exact SDK call), then graduate to the SDKs (Python, TypeScript, and most major languages).
 
 ## 2. The 30-second anatomy
 
@@ -37,7 +37,7 @@ print(response.content[0].text)
 | Claude Fable 5 | `claude-fable-5` | 1M | $10 / $50 | The hardest reasoning and long-horizon agent work; new Mythos-class tier above Opus |
 | Claude Opus 5 | `claude-opus-5` | 1M | $5 / $25 | Default for demanding work: complex code, deep analysis, agents |
 | Claude Opus 4.8 / 4.7 | `claude-opus-4-8` / `-4-7` | 1M | $5 / $25 | Prior Opus generations, still supported |
-| Claude Sonnet 5 | `claude-sonnet-5` | 1M | $3 / $15 (intro $2 / $10 through 2026-08-31) | The high-volume workhorse: great quality per dollar |
+| Claude Sonnet 5 | `claude-sonnet-5` | 1M | $2 / $10 | The high-volume workhorse: great quality per dollar (launch pricing made permanent in Aug 2026) |
 | Claude Sonnet 4.6 | `claude-sonnet-4-6` | 1M | $3 / $15 | Previous workhorse |
 | Claude Haiku 4.5 | `claude-haiku-4-5` | 200K | $1 / $5 | Speed and scale: classification, extraction, routing, subagents |
 
@@ -101,7 +101,7 @@ Rules of thumb the top 1% apply: **start at the simplest tier that works** (a si
 
 ## 8. Exercises
 
-1. Workbench: take your Module 01 skill's job and run it as a raw API call; use the prompt improver on your prompt and diff the two.
+1. Playground: take your Module 01 skill's job and run it as a raw API call; try it at two effort levels and compare quality against cost.
 2. Write a 20-line script (Claude Code will happily write it): classify 50 sample emails with Haiku 4.5, total cost printed. Then re-run via the Batch API.
 3. Add `cache_control` to a repeated-call script and verify `cache_read_input_tokens > 0`; break it with a timestamp to see the invalidation.
 4. Build one Tool Runner agent with two tools (e.g., `get_calendar`, `send_summary` stubs).

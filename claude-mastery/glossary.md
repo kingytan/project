@@ -10,7 +10,13 @@ One line each. Terms you'll meet across Claude's products and docs.
 
 **CLAUDE.md** — A file of standing instructions Claude Code loads at session start; project memory in a text file.
 
+**Claude Design** — Chat-to-canvas visual design surface (mockups, slides, posters) with a real editor and design-system support.
+
+**Claude Tag** — Claude as a Slack teammate you @-mention in channels; works under its own identity with your org's tools.
+
 **Connector** — A claude.ai integration (built on MCP) giving Claude access to an external service like Drive, Gmail, or Linear.
+
+**Cowork** — Anthropic's agentic surface for non-coding knowledge work: describe an outcome, Claude works across many steps (files, apps, research) and returns finished deliverables.
 
 **Context window** — The model's working memory: everything (prompt, files, conversation, tool results) it can see at once, measured in tokens.
 

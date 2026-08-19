@@ -35,8 +35,8 @@ Knowledge doesn't compound; habits do. This is a day-by-day installation plan: ~
 ## Week 4 — Automation and compounding (Modules 05–07)
 
 - **Day 22.** Cloud sessions. Send a long task to claude.ai/code from your phone or browser; check in twice; review at the end.
-- **Day 23.** Schedule something. One Routine or scheduled task that runs without you (morning triage, weekly summary, inbox digest).
-- **Day 24.** Non-code Claude Code day. Run a personal/ops task through Claude Code: organize a folder tree, process a batch of PDFs, build a tracker.
+- **Day 23.** Schedule something. One Cowork scheduled task or Claude Code Routine that runs without you (morning brief, weekly digest, inbox triage).
+- **Day 24.** Cowork day. Hand it an outcome that costs you 45 minutes by hand (organize a folder tree, turn raw notes into a findings doc, assemble a report from three files). Walk away. Judge the deliverable.
 - **Day 25.** API taste (optional but eye-opening). In the Console workbench, run one of your skills' jobs as an API call; understand what you'd automate if you shipped it.
 - **Day 26.** The audit. Run Module 07's self-audit. Score honestly.
 - **Day 27.** Fix your two lowest audit scores with a system, not an intention (a skill, a hook, a Routine, a Project).

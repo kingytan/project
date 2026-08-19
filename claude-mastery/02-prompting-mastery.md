@@ -105,7 +105,7 @@ Prompt guides from 2023-2024 taught heavy scaffolding: rigid step-by-step instru
 
 Micro-managing the middle wastes your time and fights the model's planning. Keep the scaffolding for what genuinely needs it: compliance rules, exact formats, safety rails. Everything else: brief like you'd brief your best employee, and judge the result against your criteria.
 
-Corollary the top 1% use daily: **ask Claude to write the prompt.** "Here's what I want and what went wrong last time; write the prompt that would have gotten it right the first time." Then save the good ones (Module 01 told you where: skills). The API Console even ships a prompt improver that does this mechanically.
+Corollary the top 1% use daily: **ask Claude to write the prompt.** "Here's what I want and what went wrong last time; write the prompt that would have gotten it right the first time." Then save the good ones (Module 01 told you where: skills).
 
 ## 5. Anti-patterns (instant tells of an amateur)
 
