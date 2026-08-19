@@ -1,0 +1,679 @@
+<title>Installable Expertise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ground: #F3F2EC;
+    --surface: #FBFAF5;
+    --sunk: #EAE9E0;
+    --ink: #191E1B;
+    --ink-soft: #565C53;
+    --ink-faint: #838A7E;
+    --rule: #D6D6CA;
+    --accent: #1C5849;
+    --accent-soft: #E2EBE5;
+    --signal: #A9501C;
+
+    --display: "Bricolage Grotesque", "Helvetica Neue", sans-serif;
+    --body: "Newsreader", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+    --measure: 34rem;
+    --step-0: 1.0625rem;
+    --step-1: 1.3rem;
+    --step-2: 1.75rem;
+    --step-3: 2.4rem;
+    --step-4: clamp(2.8rem, 7vw, 4.4rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #111512;
+      --surface: #181D19;
+      --sunk: #1E241F;
+      --ink: #E7E9E1;
+      --ink-soft: #A2A99C;
+      --ink-faint: #757C70;
+      --rule: #2B322C;
+      --accent: #77C2A4;
+      --accent-soft: #1D2C26;
+      --signal: #DE9059;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #111512;
+    --surface: #181D19;
+    --sunk: #1E241F;
+    --ink: #E7E9E1;
+    --ink-soft: #A2A99C;
+    --ink-faint: #757C70;
+    --rule: #2B322C;
+    --accent: #77C2A4;
+    --accent-soft: #1D2C26;
+    --signal: #DE9059;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  .col {
+    max-width: var(--measure);
+    margin-inline: auto;
+  }
+
+  /* ---------- masthead ---------- */
+
+  header.mast {
+    border-bottom: 1px solid var(--rule);
+    padding: clamp(3rem, 9vw, 6rem) 0 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: var(--step-4);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    margin: 0 0 1.5rem;
+    max-width: 14ch;
+  }
+
+  .standfirst {
+    font-size: var(--step-1);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 38ch;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .standfirst strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ---------- sections ---------- */
+
+  section { margin-bottom: 4.5rem; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 1rem;
+  }
+
+  .eyebrow::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: var(--step-3);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    margin: 0 0 1.25rem;
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--step-1);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  p { margin: 0 0 1.1rem; }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  strong { font-weight: 500; color: var(--ink); }
+
+  em.lede {
+    display: block;
+    font-family: var(--display);
+    font-style: normal;
+    font-weight: 500;
+    font-size: var(--step-1);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 1.5rem;
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--sunk);
+    padding: 0.12em 0.35em;
+    border-radius: 2px;
+  }
+
+  /* ---------- code blocks ---------- */
+
+  pre {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.65;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    padding: 1.15rem 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  pre code { background: none; padding: 0; font-size: inherit; }
+  .cmt { color: var(--ink-faint); }
+  .key { color: var(--accent); }
+  .bad { color: var(--signal); }
+
+  /* ---------- figure ---------- */
+
+  figure {
+    margin: 2.5rem 0;
+    max-width: 46rem;
+    margin-inline: auto;
+  }
+
+  figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink-soft);
+  }
+
+  figcaption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    margin-top: 1rem;
+    max-width: 52ch;
+  }
+
+  .d-rule { fill: none; stroke: currentColor; stroke-width: 1; }
+  .d-fill { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1; }
+  .d-dash { fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 4 4; opacity: 0.55; }
+  .d-line { stroke: currentColor; stroke-width: 1; fill: none; }
+  .d-line-hi { stroke: var(--accent); stroke-width: 1.5; fill: none; }
+  .d-t { font-family: var(--mono); font-size: 12px; fill: currentColor; }
+  .d-t-hi { font-family: var(--mono); font-size: 12px; fill: var(--accent); }
+  .d-t-sm { font-family: var(--mono); font-size: 10.5px; fill: currentColor; opacity: 0.75; }
+  .d-head { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; fill: currentColor; opacity: 0.65; }
+
+  /* ---------- tables ---------- */
+
+  .table-scroll { overflow-x: auto; margin: 1.75rem 0; }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 0.7rem 1rem 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  th {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom-color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  td:first-child { color: var(--ink); font-weight: 500; padding-right: 1.5rem; }
+  tbody tr:last-child td { border-bottom: none; }
+
+  /* ---------- scenario cards ---------- */
+
+  .scenario {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 1.5rem 1.6rem;
+    margin: 1.75rem 0;
+  }
+
+  .scenario > h3 { margin-top: 0; }
+  .scenario > p:last-child { margin-bottom: 0; }
+  .scenario pre { margin-bottom: 0.5rem; }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.9rem;
+  }
+
+  /* ---------- secrets ---------- */
+
+  .secret {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0 1.25rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .secret:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .secret-num {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--signal);
+    padding-top: 0.35rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .secret h3 { margin: 0 0 0.6rem; grid-column: 2; }
+  .secret p { grid-column: 2; margin-bottom: 0.8rem; }
+  .secret p:last-child { margin-bottom: 0; }
+  .secret pre { grid-column: 2; }
+
+  @media (max-width: 34rem) {
+    .secret { grid-template-columns: 1fr; gap: 0; }
+    .secret h3, .secret p, .secret pre { grid-column: 1; }
+    .secret-num { padding-top: 0; margin-bottom: 0.4rem; }
+  }
+
+  /* ---------- pull ---------- */
+
+  .pull {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--step-2);
+    line-height: 1.22;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    border-top: 2px solid var(--accent);
+    padding-top: 1.25rem;
+    margin: 3rem 0;
+    text-wrap: balance;
+  }
+
+  /* ---------- checklist ---------- */
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: s; margin: 1.5rem 0 0; }
+
+  ol.steps li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  ol.steps li::before {
+    content: counter(s, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    padding-top: 0.28rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  ul.plain { padding-left: 1.1rem; margin: 1.1rem 0; }
+  ul.plain li { margin-bottom: 0.55rem; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 5rem;
+    padding-top: 1.75rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color 120ms ease; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="col">
+      <p class="kicker">Claude Mastery &middot; Module 01</p>
+      <h1>Installable Expertise</h1>
+      <p class="standfirst">A skill is a folder Claude loads when your task calls for it. <strong>You write the expertise once; Claude applies it every time after.</strong></p>
+    </div>
+  </header>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">The object</p>
+      <h2>It is a folder. That's the whole format.</h2>
+      <p>No SDK, no build step, no registration. A skill is a directory with one required file and whatever supporting material the job needs.</p>
+    </div>
+
+    <div class="col">
+<pre><code>my-skill/
+├── SKILL.md          <span class="cmt"># required: instructions + frontmatter</span>
+├── references/       <span class="cmt"># deep material, read only when needed</span>
+│   └── style-guide.md
+├── scripts/          <span class="cmt"># code Claude runs instead of improvising</span>
+│   └── validate.py
+└── templates/        <span class="cmt"># files Claude fills in</span>
+    └── report.md</code></pre>
+
+      <p><code>SKILL.md</code> opens with YAML frontmatter, then plain Markdown instructions:</p>
+
+<pre><code><span class="cmt">---</span>
+<span class="key">name:</span> quarterly-report
+<span class="key">description:</span> Generate the quarterly business review in house
+  format. Use when the user asks for a QBR, quarterly report, board
+  update, or business review. Pulls figures from metrics.csv and
+  never invents numbers.
+<span class="cmt">---</span>
+
+# Quarterly Report
+
+1. Read metrics.csv, compute quarter-over-quarter deltas.
+2. Run scripts/validate.py to confirm the numbers reconcile.
+3. Fill templates/report.md, following references/style-guide.md.</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">The mechanism</p>
+      <h2>Progressive disclosure is the entire point</h2>
+      <p>This is the part most users never learn, and it's what makes skills different from every other way of customizing Claude. A skill loads in layers, and only the layer your task needs ever reaches the context window.</p>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 760 372" role="img" aria-label="Diagram: a skill's name and description always load into the context window, while the SKILL.md body loads only when a task matches and reference files load only when a step needs them, leaving the rest of the window free.">
+        <text class="d-head" x="24" y="22">THE SKILL ON DISK</text>
+        <text class="d-head" x="500" y="22">CONTEXT WINDOW</text>
+
+        <rect class="d-fill" x="24" y="40" width="250" height="58"/>
+        <text class="d-t-hi" x="40" y="64">name + description</text>
+        <text class="d-t-sm" x="40" y="84">~30 tokens</text>
+
+        <rect class="d-rule" x="24" y="128" width="250" height="58"/>
+        <text class="d-t" x="40" y="152">SKILL.md body</text>
+        <text class="d-t-sm" x="40" y="172">the procedure</text>
+
+        <rect class="d-rule" x="24" y="216" width="250" height="86"/>
+        <text class="d-t" x="40" y="240">references/</text>
+        <text class="d-t" x="40" y="262">scripts/ templates/</text>
+        <text class="d-t-sm" x="40" y="286">can be enormous</text>
+
+        <defs>
+          <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+            <polygon points="0,1 8,4 0,7" fill="currentColor"/>
+          </marker>
+          <marker id="ah-hi" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+            <polygon points="0,1 8,4 0,7" fill="var(--accent)"/>
+          </marker>
+        </defs>
+
+        <line class="d-line-hi" x1="282" y1="69" x2="492" y2="69" marker-end="url(#ah-hi)"/>
+        <text class="d-t-hi" x="310" y="59">always</text>
+
+        <line class="d-line" x1="282" y1="157" x2="492" y2="132" marker-end="url(#ah)"/>
+        <text class="d-t-sm" x="306" y="160">only if the task matches</text>
+
+        <line class="d-line" x1="282" y1="259" x2="492" y2="205" marker-end="url(#ah)"/>
+        <text class="d-t-sm" x="306" y="262">only the file a step needs</text>
+
+        <rect class="d-rule" x="500" y="40" width="236" height="300"/>
+        <rect class="d-fill" x="514" y="54" width="208" height="36"/>
+        <text class="d-t-hi" x="528" y="77">description</text>
+
+        <rect class="d-dash" x="514" y="104" width="208" height="42"/>
+        <text class="d-t-sm" x="528" y="130">body, on match</text>
+
+        <rect class="d-dash" x="514" y="160" width="208" height="52"/>
+        <text class="d-t-sm" x="528" y="191">one reference file</text>
+
+        <text class="d-t-sm" x="528" y="290">everything else:</text>
+        <text class="d-t-sm" x="528" y="308">still free for your task</text>
+      </svg>
+      <figcaption>Fifty installed skills cost a few paragraphs of standing context. A skill can carry a 200-page manual and Claude reads only the chapter this task needs.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>Compare that to the alternatives. Everything you put in project instructions or a <code>CLAUDE.md</code> file is paid for on <em>every single message</em>, relevant or not. Skills are the only customization mechanism that gives Claude effectively unbounded expertise at near-zero standing cost.</p>
+      <p>That property is why the rest of this page matters. It means you can keep building, forever, without ever paying for the skills you aren't using right now.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">Reach</p>
+      <h2>Write once, works everywhere</h2>
+      <p>The same folder format runs on every Claude surface. The skill you build in Claude Code works when you upload it to claude.ai, and when your company later automates the workflow through the API.</p>
+    </div>
+    <div class="col table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Surface</th><th scope="col">Where skills live</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Claude Code</td><td><code>~/.claude/skills/</code> for you everywhere, <code>.claude/skills/</code> committed to a repo for your team</td></tr>
+          <tr><td>claude.ai &amp; apps</td><td>Customize &rarr; Skills. Every plan, including Free. Build by conversation or upload a folder</td></tr>
+          <tr><td>Cowork</td><td>Same skills, applied to agentic knowledge work</td></tr>
+          <tr><td>The API</td><td>Skills API plus the code-execution container, for skills inside your own products</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <p>Two ways a skill fires. <strong>Automatically</strong>, when Claude reads your request and matches it against every installed skill's description. Or <strong>explicitly</strong>, as a slash command in Claude Code (<code>/quarterly-report</code>). Explicit is a guarantee; automatic is the convenience you're aiming for.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">Judgment</p>
+      <h2>When it's a skill, and when it isn't</h2>
+      <em class="lede">The reliable signal: you have typed the same instructions twice. The third time is you doing a skill's job by hand.</em>
+      <p>Four more signals. There is a <strong>right way</strong> to do it, with steps and checks. The output must match a <strong>format or voice</strong>. Claude needs <strong>knowledge it can't have</strong> — your internal API, your client's quirks, your family's constraints. Or part of the job is <strong>deterministic</strong>, and a script should do it.</p>
+    </div>
+    <div class="col table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">If you want</th><th scope="col">Use instead</th><th scope="col">Because</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A rule for every message in a project</td><td>CLAUDE.md or project instructions</td><td>Always-on context belongs in always-loaded files</td></tr>
+          <tr><td>A one-off task</td><td>Just prompt</td><td>Skills are for repetition</td></tr>
+          <tr><td>Access to Gmail, Jira, a database</td><td>Connectors and MCP</td><td>MCP gives Claude reach; skills give it technique</td></tr>
+          <tr><td>Facts remembered about you</td><td>Memory</td><td>Memory is passive recall; a skill is active procedure</td></tr>
+          <tr><td>A large isolated investigation</td><td>Subagents</td><td>Subagents give fresh context; a skill can direct how they're used</td></tr>
+        </tbody>
+      </table>
+      <p>Keep the two axes straight and you'll out-architect most users: <strong>CLAUDE.md is always loaded, so keep it tiny. Skills load on demand, so they can be huge.</strong></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">Applied</p>
+      <h2>Two you could build today</h2>
+    </div>
+
+    <div class="col">
+      <div class="scenario">
+        <span class="tag">Work</span>
+        <h3>The Monday status update</h3>
+        <p>You produce some recurring artifact — a status update, a client summary, a standup report. Every week you re-explain the format, the tone, what your manager cares about. That re-explanation <em>is</em> a skill, still running in interpreted mode. Compile it:</p>
+<pre><code><span class="key">description:</span> Write my Monday status update for my manager. Use
+  when I ask for my weekly update, status report, or Monday summary.
+
+## Rules
+- Three sections: Shipped / In progress / Blocked+Risks.
+- Lead every bullet with the outcome, not the activity.
+  ("Cut page load 40%" not "Worked on performance.")
+- Blocked items name the person or decision needed.
+- Under 200 words. My manager reads on a phone.
+- No "just", no "hopefully".</code></pre>
+        <p>Monday becomes: paste raw notes, type <em>weekly update</em>, get a finished draft. Ten minutes to write, saved every week forever, and more consistent than when you prompted from scratch.</p>
+      </div>
+
+      <div class="scenario">
+        <span class="tag">Personal</span>
+        <h3>The trip planner</h3>
+        <p>Personal life is where skills are most underused. Anything you do repeatedly with rules attached qualifies.</p>
+<pre><code><span class="key">description:</span> Plan family trips my way. Use when I ask to plan
+  a trip, vacation, itinerary, or getaway.
+
+## Constraints (non-negotiable)
+- Two adults, one 6-year-old: one big activity per day max,
+  hotel pool required, first dinner near the hotel.
+- Hotels under $250/night, breakfast included preferred.
+- I hate: hop-on-hop-off buses, QR-code-only menus.
+- Always output: day-by-day table, booking checklist with
+  deadlines, packing list keyed to the forecast.</code></pre>
+        <p>Now <em>&ldquo;plan us four days in Osaka in November&rdquo;</em> lands tailored on the first try, from your phone, carrying twenty preferences you would never bother typing. The same shape works for meal planning around your diet, a monthly budget review that reads your bank export, gift research, or a homework helper with your rule about not giving the answer away.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">The difference</p>
+      <h2>Six things the top 1% do</h2>
+    </div>
+
+    <div class="col">
+      <div class="secret">
+        <span class="secret-num">01</span>
+        <h3>The description is the product</h3>
+        <p>Most skills fail at retrieval, not content: Claude never loads them because the description doesn't match how you actually phrase things. At session start, that description is the <em>only</em> thing Claude sees. Amateurs write labels. Experts write trigger specifications.</p>
+<pre><code><span class="bad"># Never fires</span>
+description: A skill for better writing.
+
+<span class="key"># Fires exactly when it should</span>
+description: Remove AI writing patterns from prose. Use when
+  drafting, editing, or polishing any text — emails, docs,
+  posts — or when the user says it "sounds like AI" or
+  "too wordy". Do not use for code comments.</code></pre>
+        <p>The formula: what it does, when to use it, the literal words you'd say, and when <em>not</em> to. Then test it — phrase the task three ways in fresh sessions and check it loads each time. If it doesn't, tune the description, not the body.</p>
+      </div>
+
+      <div class="secret">
+        <span class="secret-num">02</span>
+        <h3>Ship scripts, not prose</h3>
+        <p>Experts push every deterministic step into a bundled script and reserve the model for judgment. Anthropic's own document skills work this way: the Excel skill doesn't <em>describe</em> how to build a spreadsheet, it ships Python that does it flawlessly.</p>
+        <p>Ask of every step: does this have exactly one correct output? Parsing a CSV, validating totals, renaming files — script. Deciding what the numbers mean — model. Scripts are faster, cost almost no context, and never hallucinate.</p>
+      </div>
+
+      <div class="secret">
+        <span class="secret-num">03</span>
+        <h3>The compile loop</h3>
+        <p>This is the big one. Top users treat prompts as source and skills as the compiled binary. The habit: <strong>the moment a session produces a great result, end it with &ldquo;turn what we just did into a skill.&rdquo;</strong> Claude Code ships a <code>skill-creator</code> that interviews you, drafts the folder, writes the trigger description, and evaluates it.</p>
+        <p>Every correction you make once becomes a rule Claude never breaks again. Average users have the same conversation every week and lose the learning each time — the session ends and the coaching evaporates. Top users convert coaching into infrastructure, and the gap compounds weekly.</p>
+      </div>
+
+      <div class="secret">
+        <span class="secret-num">04</span>
+        <h3>Test them like software</h3>
+        <p>Version-controlled, changelogged, evaluated. Run realistic tasks with and without the skill, compare outputs, measure whether the description triggers reliably. When a skill misbehaves, don't rewrite it — add the failing case the way you'd add a regression test.</p>
+      </div>
+
+      <div class="secret">
+        <span class="secret-num">05</span>
+        <h3>Small skills compose</h3>
+        <p>One giant do-everything skill performs worse than five sharp ones, because Claude loads exactly what the task needs and combines them — brand-voice plus the PowerPoint skill plus a data-analysis skill, in a single request. Build a library of single-purpose tools, not a Swiss Army knife with fifty blades open at once.</p>
+      </div>
+
+      <div class="secret">
+        <span class="secret-num">06</span>
+        <h3>Skills are how teams scale taste</h3>
+        <p>A skill committed to <code>.claude/skills/</code> ships to every teammate on <code>git pull</code>; admins can push skills across an organization. Your best reviewer's checklist and your best writer's voice, encoded once and applied by everyone. That's the difference between a style guide nobody reads and one that enforces itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="pull">Without skills, your output quality depends on how well you prompt today — and your best prompting evaporates when the chat ends.</p>
+      <p>With a library, prompting shrinks to intent: &ldquo;do the weekly report&rdquo; replaces three paragraphs, because the three paragraphs are installed. Quality becomes a floor instead of a coin flip, since the skill applies rule seven every time, including the one you'd forget. Delegation becomes trustworthy, so you review outcomes rather than supervising mechanics.</p>
+      <p>And it compounds. Week-ten you is served by nine weeks of accumulated, tested expertise. That's the real moat: the top 1% aren't better prompters, they've stopped re-prompting.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <p class="eyebrow">This week</p>
+      <h2>Six moves, in order</h2>
+      <ol class="steps">
+        <li>Read a real skill end to end — <code>SKILL.md</code> first, then its <code>references/</code>. Note the router-plus-references shape.</li>
+        <li>List the last three instructions you've given Claude more than twice. Those are your first three skills.</li>
+        <li>Build one with <code>/skill-creator</code>. Keep <code>SKILL.md</code> under 100 lines.</li>
+        <li>Test the trigger: fresh session, phrase the task three ways, tune until it fires three times out of three.</li>
+        <li>Find one deterministic step in it and move that step into <code>scripts/</code>.</li>
+        <li>For one week, end every good session with: <em>&ldquo;Should any of this become a skill? If yes, draft it.&rdquo;</em></li>
+      </ol>
+      <p style="margin-top:1.75rem">That last habit is the one that does the work. Everything else on this page is technique; that one is compounding.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="col">
+      Claude Mastery &middot; Module 01 of 8 &middot; August 2026<br>
+      Next: prompting mastery — the craft that skills encode.
+    </div>
+  </footer>
+
+</div>
